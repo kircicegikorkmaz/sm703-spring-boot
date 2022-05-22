@@ -20,20 +20,24 @@ pipeline {
 			 
 		}
 		stage("deploy"){
-		if(env.BRANCH_NAME == 'main'){
+		when {
+                        expression { env.BRANCH_NAME == 'master' }
+                    }
 		     steps{  
                             sh 'scripts/deploy.sh'
                         }   
-			}
-		}
+
+	}
 		stage("deploy-dev"){
-		if(env.BRANCH_NAME == 'develop'){
+		when {
+                        expression { env.BRANCH_NAME == 'master' }
+                    }
 		     steps{
                             sh 'scripts/deploy-dev.sh'
                         }
-			}
-		}
 
+	}
+}
 	post {
 		changed {
 			script {
