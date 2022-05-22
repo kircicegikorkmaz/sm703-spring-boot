@@ -25,6 +25,7 @@ pipeline {
                             sh 'scripts/deploy.sh'
                         }   
 		}
+	}
 		stage("deploy-dev"){
 		if(env.BRANCH_NAME == 'develop'){
 		     steps{
