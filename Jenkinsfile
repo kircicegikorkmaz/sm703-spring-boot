@@ -10,7 +10,7 @@ pipeline {
 		stage("test") {
 			options { timeout(time: 30, unit: 'MINUTES') }
 			steps {
-				sh 'scripts/test.sh'
+				bat 'scripts/test.sh'
 			}
 		}
 		stage("package"){
@@ -20,11 +20,17 @@ pipeline {
 			 
 		}
 		stage("deploy"){
+		if(env.BRANCH_NAME == 'main'){
 		     steps{  
                             sh 'scripts/deploy.sh'
                         }   
 		}
-
+		stage("deploy-dev"){
+		if(env.BRANCH_NAME == 'develop'){
+		     steps{
+                            sh 'scripts/deploy-dev.sh'
+                        }
+		}
 	}
 
 	post {
