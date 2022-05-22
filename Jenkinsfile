@@ -10,7 +10,7 @@ pipeline {
 		stage("test") {
 			options { timeout(time: 30, unit: 'MINUTES') }
 			steps {
-				bat 'scripts/test.sh'
+				sh 'scripts/test.sh'
 			}
 		}
 		stage("package"){
