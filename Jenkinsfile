@@ -24,14 +24,15 @@ pipeline {
 		     steps{  
                             sh 'scripts/deploy.sh'
                         }   
+			}
 		}
 		stage("deploy-dev"){
 		if(env.BRANCH_NAME == 'develop'){
 		     steps{
                             sh 'scripts/deploy-dev.sh'
                         }
+			}
 		}
-	}
 
 	post {
 		changed {
