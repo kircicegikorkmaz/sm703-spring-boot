@@ -21,7 +21,7 @@ pipeline {
 		}
 		stage("deploy"){
 		when {
-                        expression { env.BRANCH_NAME == 'master' }
+                        expression { env.BRANCH_NAME == 'main' }
                     }
 		     steps{  
                             sh 'scripts/deploy.sh'
@@ -30,7 +30,7 @@ pipeline {
 	}
 		stage("deploy-dev"){
 		when {
-                        expression { env.BRANCH_NAME == 'master' }
+                        expression { env.BRANCH_NAME == 'develop' }
                     }
 		     steps{
                             sh 'scripts/deploy-dev.sh'
